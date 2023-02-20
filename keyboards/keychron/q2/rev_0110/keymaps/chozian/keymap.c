@@ -85,3 +85,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case _FN4:
+            rgb_matrix_sethsv_noeeprom(204, 255, 255);
+            break;
+        case _FN3:
+            rgb_matrix_sethsv_noeeprom(153, 255,255);
+            break;
+        case _FN2:
+            rgb_matrix_sethsv_noeeprom(102, 255, 255);
+            break;
+        case _FN1:
+            rgb_matrix_sethsv_noeeprom(51, 255, 255);
+            break;
+        default: //  for any other layers, or the default layer
+            rgb_matrix_sethsv_noeeprom(0, 255, 255);
+            break;
+    }
+  return state;
+}
+
